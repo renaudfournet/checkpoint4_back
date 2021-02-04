@@ -36,4 +36,55 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
+router.post('/:id', async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const results = await prisma.albums.findOne({
+      where: {
+        id: +id,
+      },
+      include: {
+        songs: true,
+      },
+    });
+    res.status(200).json(results);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.put('/:id', async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const results = await prisma.albums.findOne({
+      where: {
+        id: +id,
+      },
+      include: {
+        songs: true,
+      },
+    });
+    res.status(200).json(results);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete('/:id', async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const results = await prisma.albums.findOne({
+      where: {
+        id: +id,
+      },
+      include: {
+        songs: true,
+      },
+    });
+    res.status(200).json(results);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
